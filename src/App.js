@@ -13,10 +13,10 @@ function App() {
     <>
 
 <Router>  
-    {/* <Navbar/> */}
+    <Navbar/>
 
     <Routes>
-    <Route exact  path="/" key={1}  element={<Dashboard/>}/>
+    <Route exact  path="/" key={1}  element={<Home/>}/>
     <Route exact  path="/about" key={2}  element={<About/>}/>
     <Route exact  path="/services" key={3}  element={<Services/>}/>
     <Route exact  path="/login" key={4}  element={<Login/>}/>
