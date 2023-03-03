@@ -1,0 +1,13 @@
+@media (max-width: 1200px) {
+    
+    #sidebar{
+        transform: translateX(-200px);
+        transition: 0.4s ease-in-out;
+    }
+    #right-sidebar{
+        display: none;
+    }
+    #sidebar.open{
+        transform: translateX(0);
+    }
+}
