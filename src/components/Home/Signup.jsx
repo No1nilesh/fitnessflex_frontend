@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 // import { LockClosedIcon } from '@heroicons/react/20/solid'
 // import logo from '../assets/logo.png'
-import signupimage from '../../assets/signup.jpg'
+import signupimage from '../../assets/signup.svg'
 
 
 
@@ -16,27 +16,27 @@ function Signup(props) {
 
     <div className="bg-white">
   
-    <div className="md:w-[82%] h-[92vh] shadow-2xl mx-auto ">
-<div className="md:flex min-h-full items-center justify-center  px-4 sm:px-6 lg:px-8 shadow-2xl -z-10">
+    <div className=" h-[100svh] mx-auto ">
+<div className="md:flex min-h-full items-center justify-center  px-4 sm:px-6 lg:px-8  -z-10">
     
     <div className="signupImage md:max-w-[45%] hidden md:block ">
       <img className="" src={signupimage} alt="" />
     </div>
      
-      <div className="w-full max-w-md space-y-4">
+      <div className="w-full max-w-md space-y-4  border rounded-md p-4 shadow-md">
         <div>
           {/* <img
             className="mx-auto h-12 w-auto -z-20"
             src={logo}
             alt="Your Company"
           /> */}
-          <h1 className='text-center text-[5vmin] text-bold'>Fitness Flex</h1>
+        
           <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
-            Sign Up 
+            Signup 
           </h2>
        
         </div>
-        <form className="mt-8 space-y-6" action="#"  method="POST" encType="multipart/form-data">
+        <form className="mt-8 space-y-6" action="#"  method="POST" autoComplete="off" encType="multipart/form-data">
           <input type="hidden" name="remember" defaultValue="true" />
           <div className="-space-y-px rounded-md shadow-sm">
             <div>
@@ -53,6 +53,7 @@ function Signup(props) {
                 onChange={onchange}
                 className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                 placeholder="Name"
+                autoComplete="off"
               />
             </div>
               <label htmlFor="email-address" className="sr-only">
@@ -68,6 +69,7 @@ function Signup(props) {
                 required
                 className="relative block w-full appearance-none rounded-none  border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                 placeholder="Email address"
+                
               />
             </div>
             <div>
@@ -95,7 +97,7 @@ function Signup(props) {
                 name="cpassword"
                 type="cpassword"
                 required
-                className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                className="relative block w-full appearance-none rounded-none border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                 placeholder="Confirm Password"
               />
             </div>
@@ -108,7 +110,7 @@ function Signup(props) {
                 name="image"
                 type="file"
                 // onChange={profiledata}
-                className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm file:bg-inherit file:border-none"
+                className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-500 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm file:bg-inherit file:border-none"
                 placeholder="Profile Pic"
               />
             </div>

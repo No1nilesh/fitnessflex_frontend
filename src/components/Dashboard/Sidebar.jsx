@@ -21,8 +21,8 @@ function Sidebar() {
 
   return (
     <>
-      <img src={ham} onClick={handleSidebar}   className="z-40 left-2 w-8 fixed top-2" alt="" />
-      <div id="sidebar"  ref={SidebarRef} className=" z-30 lg:static fixed top-0  bg-gradient-to-b from-[#252835] to-[#273F94] w-[180px] h-[100vh] lg:h-[95svh] rounded-lg border border-[rgba(255,255,255,0.1)] flex flex-col items-center gap-3 drop-shadow-md lg:ml-3">
+      <img src={ham} onClick={handleSidebar}   className="z-40 left-2 w-8 fixed top-2 lg:hidden" alt="" />
+      <div id="sidebar"  ref={SidebarRef} className=" z-30 lg:static fixed top-[-1px]  bg-gradient-to-b from-[#252835] to-[#273F94] w-[180px] h-[100vh] xl:h-[95svh] rounded-lg border border-[rgba(255,255,255,0.1)] flex flex-col items-center gap-3 drop-shadow-md lg:ml-3">
         <div className="flex gap-1 border border-[rgba(255,255,255,0.3)] px-2 py-[2px] rounded-md drop-shadow-md bg-gradient-to-r from-[#4d67aa7b] to-[rgba(255,255,255,0.1)] text-white mt-[2.5rem] ">
           <img src={dashboard} alt="" />
           <span className="">Dashboard</span>

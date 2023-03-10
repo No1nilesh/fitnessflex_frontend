@@ -5,7 +5,7 @@ import "./sidebar.css";
 function RightSidebar() {
   return (
     <>
-     <div id='right-sidebar' className="bg-gradient-to-b from-[#252835] to-[#273F94] w-[220px] h-[95svh] rounded-lg border border-[rgba(255,255,255,0.1)] flex flex-col items-center gap-3 drop-shadow-md justify-self-end mr-3 ">
+     <div id='right-sidebar' className="bg-gradient-to-b from-[#252835] to-[#273F94] w-[220px] h-[100vh] xl:h-[95svh] rounded-lg border border-[rgba(255,255,255,0.1)] flex flex-col items-center gap-3 drop-shadow-md justify-self-end mr-3 ">
         <span className="avatar mt-10">
             <img src={avatar} className="w-[140px]" alt="" />
         </span>

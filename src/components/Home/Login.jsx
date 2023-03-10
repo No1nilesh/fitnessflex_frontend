@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link} from 'react-router-dom'
 // import { LockClosedIcon } from '@heroicons/react/20/solid'
-import loginimage from '../../assets/login.jpg'
+import loginimage from '../../assets/login.svg'
 // import logo from '../assets/logo.png'
 
 const Login = (props) => {
@@ -12,27 +12,26 @@ const Login = (props) => {
   return (
     <>
     <div className='bg-white'>
-    <div className="md:w-[82%] h-[100vh] shadow-2xl mx-auto">
-    <div className="md:flex min-h-full items-center justify-center py-10 px-4 sm:px-6 lg:px-8 shadow-2xl">
+    <div className="h-[100svh] mx-auto">
+    <div className="md:flex min-h-full items-center justify-center py-10 px-4 sm:px-6 lg:px-8 ">
 
     <div className="signupImage md:max-w-[45%] hidden md:block ">
       <img className="" src={loginimage} alt="" />
     </div>
 
-    <div className="w-full max-w-md space-y-8">
+    <div className="w-full max-w-md space-y-8 border rounded-md p-4 shadow-md">
       <div>
         {/* <img
           className="mx-auto h-12 w-auto"
           // src={logo}
           alt="Your Company"
         /> */}
-        <h1 className='text-center text-[5vmin] text-bold'>Fitness Flex</h1>
         <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
-          Sign in to your account
+          Login
         </h2>
        
       </div>
-      <form className="mt-8 space-y-6" action="#" method="POST" >
+      <form className="mt-8 space-y-6 " action="#" autoComplete='off' method="POST" >
         <input type="hidden" name="remember" defaultValue="true" />
         <div className="-space-y-px rounded-md shadow-sm">
           <div>
@@ -49,6 +48,7 @@ const Login = (props) => {
               onChange={onchange}
               className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               placeholder="Email address"
+              
             />
           </div>
           <div>
@@ -76,6 +76,11 @@ const Login = (props) => {
               Forgot your password?
             </Link>
           </div>
+          <div className="text-sm">
+              <Link to="/Signup" className="font-medium text-indigo-600 hover:text-indigo-500">
+                New User ? 
+              </Link>
+            </div>
         </div>
 
         <div>

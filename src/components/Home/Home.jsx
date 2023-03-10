@@ -35,12 +35,14 @@ Welcome to the ultimate gym management website! With our powerful tools and feat
   
 
     {/* </div> */}
-    <section className='h-[100vh] flex justify-center items-center '>
+    <section className='lg:h-[100vh] flex justify-center items-center '>
 <h1 className='invisible'>
   home
 </h1>
     </section>
-    <section className='h-[100vh] flex justify-center items-center'> 
+
+    
+    <section className='h-[100vh] flex justify-center items-end'> 
             <div className="container flex ">
         <div className="trainer text-white">
           <h1 className='text-[7vmin] font-bold text-center'>

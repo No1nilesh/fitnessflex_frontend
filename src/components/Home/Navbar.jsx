@@ -13,7 +13,7 @@ Navlist.current.classList.toggle("open")
   return (
     <>
 
-        <nav className=" md:flex justify-around items-center gap-2 shadow-lg z-[1] sticky top-0 rounded-md text-gray-200 w-full ">
+        <nav className=" md:flex justify-around items-center gap-2 shadow-lg z-[100] fixed top-0 rounded-md text-gray-200 w-full bg-[hsl(232,54%,11%)] ">
           <div className="logo flex items-center gap-1 ">
             <img src={logo} className=" m-[2px] w-8 rounded-full" alt="" />
             {/* <div className="  text-2xl">FITNESS FLEX</div> */}
@@ -29,16 +29,9 @@ Navlist.current.classList.toggle("open")
               <Link to="/about">About</Link>
             </li>
             <li className="w-full md:max-w-fit  px-2">
-              <Link to="/login">Login</Link>
+              <Link to="/Signup">Register</Link>
             </li>
-            <li className="w-full md:max-w-fit  px-2">
-              <Link
-                to="/signup"
-                className=""
-              >
-                Sign Up
-              </Link>
-            </li>
+         
           </ul>
 
         <button className="hamburger absolute  z-10 flex flex-col gap-[0.3rem] top-[8px] right-3 cursor-pointer  md:hidden" onClick={handleClick} >

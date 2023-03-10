@@ -30,7 +30,7 @@ function CenterContent() {
           <h1 className="self-start ml-2">Members</h1>
           <div className="members flex flex-wrap gap-2 lg:flex-nowrap justify-center">
             {/* members list */}
-            <div className="card bg-gradient-to-r from-[#384BD6] to-[#1EB1BA] w-[95%] lg:w-[18rem]  h-[8rem] rounded-lg p-3  relative flex justify-center">
+            <div className=" bg-gradient-to-r from-[#384BD6] to-[#1EB1BA] w-[95%] lg:w-[18rem]  min-h-[8rem] rounded-lg p-3  relative flex justify-center">
             <img src={threedot} className="absolute w-8 right-0" alt="" />
               <h2 className="text-center">Member List</h2>
               <div className="flex gap-2 justify-center absolute bottom-2 items-center ">
@@ -44,7 +44,7 @@ function CenterContent() {
             </div>
 
             {/* New members */}
-            <div className="card bg-gradient-to-r from-[#384BD6] to-[#1EB1BA] w-[95%] lg:w-[18rem] h-[8rem] rounded-lg p-3 relative">
+            <div className=" bg-gradient-to-r from-[#384BD6] to-[#1EB1BA] w-[95%] lg:w-[18rem] min-h-[8rem] rounded-lg p-3 relative">
             <img src={threedot} className="absolute w-8 right-0" alt="" />
               <h2 className="text-center">New Members</h2>
               <div className="flex gap-2 justify-center">
@@ -53,7 +53,7 @@ function CenterContent() {
             </div>
 
             {/* total members */}
-            <div className="card bg-gradient-to-r from-[#384BD6] to-[#1EB1BA] w-[95%] lg:w-[18rem] h-[8rem] rounded-lg p-3 relative">
+            <div className=" bg-gradient-to-r from-[#384BD6] to-[#1EB1BA] w-[95%] lg:w-[18rem] min-h-[8rem] rounded-lg p-3 relative">
             <img src={threedot} className="absolute w-8 right-0" alt="" />
 
               <h2 className="text-center">Total Member</h2>
@@ -68,7 +68,7 @@ function CenterContent() {
 
           {/* expected ratio */}
           <div className="members flex flex-wrap gap-2 justify-center  lg:flex-nowrap">
-            <div className="card bg-gradient-to-r from-[#384BD6] to-[#1EB1BA] w-[95%] lg:w-[27.5rem] h-[22rem] rounded-lg p-3 relative">
+            <div className=" bg-gradient-to-r from-[#384BD6] to-[#1EB1BA] w-[95%] lg:w-[27.5rem] min-h-[22rem] rounded-lg p-3 relative">
             <img src={threedot} className="absolute w-8 right-0" alt="" />
              
               <div className="flex gap-2 justify-center">
@@ -80,7 +80,7 @@ function CenterContent() {
             </div>
 
             {/* Monthly income             */}
-            <div className="card bg-gradient-to-r from-[#384BD6] to-[#1EB1BA] w-[95%] lg:w-[27.5rem] h-[22rem] rounded-lg p-3 relative">
+            <div className=" bg-gradient-to-r from-[#384BD6] to-[#1EB1BA] w-[95%] lg:w-[27.5rem] min-h-[22rem] rounded-lg p-3 relative">
             <img src={threedot} className="absolute w-8 right-0" alt="" />
               <h2 className="text-center">Monthly Income</h2>
               <div className="flex gap-2 justify-center">
