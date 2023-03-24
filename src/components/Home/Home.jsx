@@ -4,9 +4,9 @@ import Spline from '@splinetool/react-spline';
 
 function Home() {
 
+
   return (
     <>
-
 <Spline className='' scene="https://prod.spline.design/058vdxRcnabIhul8/scene.splinecode" />
     {/* <div className=" h-[100svh] w-[100svw] "> */}
     {/* <p className='invisible'>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p> */}

@@ -34,21 +34,21 @@ function RightSidebar() {
     <li className='flex  justify-start items-center gap-2  rounded-lg py-1 px-5 bg-[rgba(64,22,98,0.37)] drop-shadow-lg'>
     <img src={avatar} className="w-[35px]" alt="" />
     <div className='flex flex-col gap-0'>
-        <div className='name m-0 text-white'>Salmon Bhai</div> 
+        <div className='name m-0 text-white'>Ravi Demo</div> 
         <span className='time text-xs text-gray-500 m-0'>5min</span>
     </div>
     </li>
     <li className='flex  justify-start items-center gap-2  rounded-lg py-1 px-5 bg-[rgba(64,22,98,0.37)] drop-shadow-lg'>
     <img src={avatar} className="w-[35px] self-start" alt="" />
     <div className='flex flex-col gap-0'>
-        <div className='name m-0 text-white'>Dhincak pooja</div> 
+        <div className='name m-0 text-white'>Demo 3</div> 
         <span className='time text-xs text-gray-500 m-0'>5min</span>
     </div>
     </li>
     <li className='flex  justify-start items-center gap-2   rounded-lg py-1 px-5 bg-[rgba(64,22,98,0.37)] drop-shadow-lg'>
     <img src={avatar} className="w-[35px]" alt="" />
     <div className='flex flex-col gap-0'>
-        <div className='name m-0 text-white'>Hindustani bhau</div> 
+        <div className='name m-0 text-white'>demo 5</div> 
         <span className='time text-xs text-gray-500 m-0'>5min</span>
     </div>
     </li>

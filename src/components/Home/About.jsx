@@ -1,7 +1,6 @@
 import React from "react";
 import dumble from "../../assets/dumble.svg";
-import twitter from "../../assets/twitter.svg";
-import youtube from "../../assets/youtube.svg";
+
 import "./About.css";
 
 function About() {

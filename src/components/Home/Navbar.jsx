@@ -1,6 +1,6 @@
 import {  React,useRef } from "react";
 import { Link } from "react-router-dom";
-import logo from "../../assets/FITNESS.png";
+import logo from "../../assets/fitnesslogo.png";
 
 function Navbar() {
 
@@ -15,7 +15,7 @@ Navlist.current.classList.toggle("open")
 
         <nav className=" md:flex justify-around items-center gap-2 shadow-lg z-[100] fixed top-0 rounded-md text-gray-200 w-full bg-[hsl(232,54%,11%)] ">
           <div className="logo flex items-center gap-1 ">
-            <img src={logo} className=" m-[2px] w-8 rounded-full" alt="" />
+            <img src={logo} className=" m-[2px] w-16 " alt="" />
             {/* <div className="  text-2xl">FITNESS FLEX</div> */}
           </div>
           <ul className="md:flex flex-col gap-2 justify-center items-center  text-lg md:flex-row py-2 hidden navlist md:visible" ref={Navlist} >

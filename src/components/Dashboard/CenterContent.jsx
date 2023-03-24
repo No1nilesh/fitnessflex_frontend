@@ -83,11 +83,11 @@ function CenterContent() {
             <div className=" bg-gradient-to-r from-[#384BD6] to-[#1EB1BA] w-[95%] lg:w-[27.5rem] min-h-[22rem] rounded-lg p-3 relative">
             <img src={threedot} className="absolute w-8 right-0" alt="" />
               <h2 className="text-center">Monthly Income</h2>
-              <div className="flex gap-2 justify-center">
-              {/* graph here */}
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam enim ea tempore repellat, alias distinctio hic perspiciatis sapiente laboriosam a illo velit modi quod fugiat aut, accusantium placeat itaque temporibus.
-              </div>
+              <div className="flex gap-2 justify-center h-full items-center">
+             
               <span className="absolute bottom-2 text-4xl text-gray-300">22%</span>
+              {/* Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam enim ea tempore repellat, alias distinctio hic perspiciatis sapiente laboriosam a illo velit modi quod fugiat aut, accusantium placeat itaque temporibus. */}
+              </div>
             </div>
           </div>
         </div>

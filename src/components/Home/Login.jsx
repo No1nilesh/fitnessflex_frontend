@@ -1,14 +1,54 @@
-import React from 'react'
+import {useEffect, useState} from 'react'
 import { Link} from 'react-router-dom'
-// import { LockClosedIcon } from '@heroicons/react/20/solid'
 import loginimage from '../../assets/login.svg'
-// import logo from '../assets/logo.png'
+import { useSelector, useDispatch } from 'react-redux'
+import { clearErrors, login } from '../../actions/userAction'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate, useLocation } from 'react-router-dom'
+
 
 const Login = (props) => {
 
+const dispatch = useDispatch();
+
+const navigate = useNavigate();
+const location = useLocation();
+
+const {loading, isAuthenticated, error, user} = useSelector(state=>state.user)
+ 
+const onchange=(e)=>{
+  setcredentials({ ...credentials, [e.target.name] : e.target.value })
+  console.log(credentials)
+   }
+
+  const [credentials, setcredentials] = useState({email: "" , password: "" })
+  const handleLogin=async(e)=>{
+      e.preventDefault();
+dispatch(login(credentials.email , credentials.password))
+  }
 
 
+  // const redirect = location.search ? location.search.split("=")[1] : "/admin";
+  useEffect(() => {
+if(error){
+  // alert.error(error)
+  toast.error(error)
+  dispatch(clearErrors());
+}
 
+if(isAuthenticated && user.role==="admin"){
+navigate("/admin")
+}else if(isAuthenticated && user.role=== "trainer"){
+  navigate("/TrainerDashboard")
+}else if(isAuthenticated && user.role==="user"){
+  navigate("/user")
+}
+
+  }, [dispatch, error ,isAuthenticated, navigate, user,])
+  
+
+ 
   return (
     <>
     <div className='bg-white'>
@@ -31,7 +71,7 @@ const Login = (props) => {
         </h2>
        
       </div>
-      <form className="mt-8 space-y-6 " action="#" autoComplete='off' method="POST" >
+      <form className="mt-8 space-y-6 " action="#" autoComplete='off' method="POST" onSubmit={handleLogin} >
         <input type="hidden" name="remember" defaultValue="true" />
         <div className="-space-y-px rounded-md shadow-sm">
           <div>
@@ -43,7 +83,7 @@ const Login = (props) => {
               name="email"
               type="email"
               // value={credentials.email}
-              autoComplete="email"
+              autoComplete="off"
               required
               onChange={onchange}
               className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
@@ -59,7 +99,7 @@ const Login = (props) => {
               id="password"
               name="password"
               type="password"
-              autoComplete="current-password"
+              autoComplete="off"
               required
               // value={credentials.password}
               onChange={onchange}
@@ -86,6 +126,7 @@ const Login = (props) => {
         <div>
           <button
             type="submit"
+            
             className="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
           >
             <span className="absolute inset-y-0 left-0 flex items-center pl-3">

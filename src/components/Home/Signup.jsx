@@ -1,13 +1,73 @@
 import {Link} from "react-router-dom";
-// import React, { useState } from 'react'
-
-// import { LockClosedIcon } from '@heroicons/react/20/solid'
-// import logo from '../assets/logo.png'
+import { useState, useEffect } from "react";
 import signupimage from '../../assets/signup.svg'
+import { useSelector, useDispatch } from 'react-redux'
+import { clearErrors, register } from '../../actions/userAction'
+import {  toast } from 'react-toastify';
+import { useNavigate , useLocation } from 'react-router-dom'
+
 
 
 
 function Signup(props) {
+
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const {loading, isAuthenticated, error} = useSelector(state=>state.user);
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  
+  const {name , email, password} = user;
+  const [avatar, setAvatar] = useState("/Profile.png");
+  const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
+
+  const handleSignup=(e)=>{
+    e.preventDefault();
+
+    const myForm = new FormData();
+
+    myForm.set("name", name)
+    myForm.set("email", email)
+    myForm.set("password", password)
+    myForm.set("avatar", avatar)
+    dispatch(register(myForm))
+}
+
+const registerDataChange = (e) => {
+  if (e.target.name === "avatar") {
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      if (reader.readyState === 2) {
+        setAvatarPreview(reader.result);
+        setAvatar(reader.result);
+      }
+    };
+
+    reader.readAsDataURL(e.target.files[0]);
+  } else {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  }
+};
+
+
+useEffect(() => {
+  if (error) {
+    toast.error(error)
+    dispatch(clearErrors());
+  }
+
+  if (isAuthenticated) {
+    // navigate.push(redirect);
+    navigate("/user")
+  }
+}, [dispatch, error,  navigate, isAuthenticated]);
 
 
 
@@ -36,7 +96,7 @@ function Signup(props) {
           </h2>
        
         </div>
-        <form className="mt-8 space-y-6" action="#"  method="POST" autoComplete="off" encType="multipart/form-data">
+        <form className="mt-8 space-y-6" action="#"  method="POST" autoComplete="off" encType="multipart/form-data" onSubmit={handleSignup}>
           <input type="hidden" name="remember" defaultValue="true" />
           <div className="-space-y-px rounded-md shadow-sm">
             <div>
@@ -50,7 +110,7 @@ function Signup(props) {
                 type="text"
                 required
                 // value={Credentials.name}
-                onChange={onchange}
+                onChange={registerDataChange}
                 className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                 placeholder="Name"
                 autoComplete="off"
@@ -65,7 +125,7 @@ function Signup(props) {
                 type="email"
                 autoComplete="email"
                 // value={Credentials.email}
-                onChange={onchange}
+                onChange={registerDataChange}
                 required
                 className="relative block w-full appearance-none rounded-none  border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                 placeholder="Email address"
@@ -81,7 +141,7 @@ function Signup(props) {
                 name="password"
                 type="password"
                 // value={Credentials.password}
-                onChange={onchange}
+                onChange={registerDataChange}
                 autoComplete="current-password"
                 required
                 className="relative block w-full appearance-none rounded-none  border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
@@ -95,7 +155,7 @@ function Signup(props) {
               <input
                 id="cpassword"
                 name="cpassword"
-                type="cpassword"
+                type="password"
                 required
                 className="relative block w-full appearance-none rounded-none border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                 placeholder="Confirm Password"
@@ -105,10 +165,12 @@ function Signup(props) {
               <label htmlFor="password" className="sr-only">
               Profile Pic
               </label>
+              <img src={avatarPreview} alt="Avatar Preview" />
               <input
-                id="image"
-                name="image"
                 type="file"
+                    name="avatar"
+                    accept="image/*"
+                    onChange={registerDataChange}
                 // onChange={profiledata}
                 className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-500 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm file:bg-inherit file:border-none"
                 placeholder="Profile Pic"

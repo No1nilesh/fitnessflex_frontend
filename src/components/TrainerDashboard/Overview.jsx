@@ -31,8 +31,8 @@ function Overview() {
       </div>
 
       <div className=" bg-gradient-to-b from-[#252835] to-[#273F94] border-[rgba(255,255,255,0.1)]    shadow rounded-lg p-6">
-        <h3 className="text-lg font-medium text-white mb-4">Calender</h3>
-        <h1>hello</h1>
+        <h3 className="text-lg font-medium text-white mb-4">h1</h3>
+        <h1>head1</h1>
       </div>
       </div>
       

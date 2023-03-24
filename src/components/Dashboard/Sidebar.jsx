@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import analyticsImg from "../../assets/analytics.png";
 import notification from "../../assets/notification.svg";
 import members from "../../assets/people.png";
@@ -10,14 +10,25 @@ import bag from "../../assets/gymbag.svg";
 import setting from "../../assets/setting.png";
 import ham from '../../assets/ham.png'
 import "./sidebar.css";
+import Modal from "../utility/Modal";
+
+
 
 function Sidebar() {
+
+
+
   const SidebarRef = useRef(null)
 
   const handleSidebar=()=>{
     console.log("hello")
     SidebarRef.current.classList.toggle("open")
   }
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <>
@@ -75,9 +86,11 @@ function Sidebar() {
         <span className="bg-[rgba(255,255,255,0.3)] h-[1px] w-[90%] rounded-md" />
 
         {/* setting */}
-        <span className=" text-white flex items-center gap-[3px] absolute bottom-3">
+          <Modal isOpen={isOpen} onClose={toggleModal} />
+        <span onClick={toggleModal} className=" text-white flex items-center gap-[3px] absolute bottom-3 cursor-pointer">
           <img className="w-[25px]" src={setting} alt="" />{" "}
           <span> Settings</span>
+          {/* <ModalExample/> */}
         </span>
       </div>
     </>
