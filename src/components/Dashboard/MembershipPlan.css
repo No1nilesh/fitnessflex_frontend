@@ -1,0 +1,33 @@
+input[type="text"] {
+    padding: 0.3rem;
+    border-radius: 2px;
+    outline: 1px solid transparent;
+    color: black;
+}
+
+input[type="text"]:focus{
+    outline:  1px solid violet;
+}
+
+/* input[type="submit"]{
+    padding: 0.4rem;
+    background-color: green;
+    border-radius: 2px;
+}  */
+
+form{
+    /* background-color: rgba(40, 41, 86, 0.405); */
+    padding: 2rem 1rem;
+    border-radius: 5px;
+   
+}
+.membership::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .membership {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  

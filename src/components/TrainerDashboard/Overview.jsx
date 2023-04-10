@@ -4,7 +4,7 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 
 import ReactBigCalendar from "../TrainerDashboard/Calender/ReactBigCalendar";
 
-function Overview() {
+function Overview({user}) {
   return (
     <div className="container mx-auto py-8">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -30,9 +30,8 @@ function Overview() {
         </div>
       </div>
 
-      <div className=" bg-gradient-to-b from-[#252835] to-[#273F94] border-[rgba(255,255,255,0.1)]    shadow rounded-lg p-6">
-        <h3 className="text-lg font-medium text-white mb-4">h1</h3>
-        <h1>head1</h1>
+      <div className=" bg-gradient-to-b from-[#252835] to-[#273F94] border-[rgba(255,255,255,0.1)]    shadow rounded-lg p-6 flex justify-start flex-col items-center gap-3">
+       
       </div>
       </div>
       

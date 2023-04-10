@@ -1,0 +1,8 @@
+body::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide the scrollbar for a specific element, like the center content */
+  .center-content::-webkit-scrollbar {
+    display: none;
+  }

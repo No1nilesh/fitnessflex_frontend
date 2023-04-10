@@ -37,6 +37,8 @@ function Signup(props) {
     myForm.set("password", password)
     myForm.set("avatar", avatar)
     dispatch(register(myForm))
+
+    if(isAuthenticated)return navigate("/user")
 }
 
 const registerDataChange = (e) => {

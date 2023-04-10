@@ -38,19 +38,23 @@ if(error){
 }
 
 if(isAuthenticated && user.role==="admin"){
+  toast.success("User logged in sussefully")
 navigate("/admin")
 }else if(isAuthenticated && user.role=== "trainer"){
-  navigate("/TrainerDashboard")
+  toast.success("User logged in sussefully")
+  navigate("/trainer")
 }else if(isAuthenticated && user.role==="user"){
+  toast.success("User logged in sussefully")
   navigate("/user")
 }
 
-  }, [dispatch, error ,isAuthenticated, navigate, user,])
+  }, [dispatch, error , isAuthenticated, navigate, user,])
   
 
  
   return (
     <>
+    <ToastContainer/>
     <div className='bg-white'>
     <div className="h-[100svh] mx-auto">
     <div className="md:flex min-h-full items-center justify-center py-10 px-4 sm:px-6 lg:px-8 ">
@@ -112,7 +116,7 @@ navigate("/admin")
         <div className="flex items-center justify-between">
           
           <div className="text-sm">
-            <Link to="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+            <Link to="/api/auth/password/forgot" className="font-medium text-indigo-600 hover:text-indigo-500">
               Forgot your password?
             </Link>
           </div>

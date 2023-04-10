@@ -9,6 +9,9 @@ import { SpeedDial, SpeedDialAction } from "@material-ui/lab";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp"
 import PersonIcon from "@material-ui/icons/Person"
 import { useNavigate } from "react-router-dom";
+import UserHome from "./UserHome";
+import Profile from "../../assets/Profile.png"
+import PaymentPageWithStripe from "./Payment";
 
 function User({user}) {
   const [tabIndex, setTabIndex] = useState(0);
@@ -44,7 +47,7 @@ function User({user}) {
           onOpen={()=>setOpen(true)}
           open={Open}
           direction={"down"}
-          icon={<img className="SpeedDialIcon" src={user.avatar.url ? user.avatar.url : "/Profile.png"} alt="Profile"/>}
+          icon={<img className="SpeedDialIcon" src={user.avatar ? user.avatar.url : Profile} alt="Profile"/>}
          
           >
           {options.map((item)=>
@@ -55,14 +58,12 @@ function User({user}) {
           <Tab>Home</Tab>
           <Tab>Workouts</Tab>
           <Tab>Diet</Tab>
-          <Tab>Payment</Tab>
+        
           
         </TabList>
 
         <TabPanel>
-       
-          {/* insert workout list and add workout form here */}
-        {/* <Workouts/> */}
+      <UserHome/>
         </TabPanel>
 
         <TabPanel>
@@ -76,11 +77,7 @@ function User({user}) {
           {/* insert progress tracker and graphs here */}
           {/* <ProgressTracker/> */}
         </TabPanel>
-        <TabPanel>
-      <h1>Attendence</h1>
-          {/* insert progress tracker and graphs here */}
-          {/* <ProgressTracker/> */}
-        </TabPanel>
+      
       </Tabs>
     </div>
   );

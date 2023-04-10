@@ -1,7 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import search from "../../assets/search.svg";
 import threedot from '../../assets/threedot.png'
-function CenterContent() {
+import { toast } from "react-toastify";
+import IncomeChart from "./tranactiondata/IncomeChart";
+import { useSelector, useDispatch } from "react-redux";
+
+import { loadFinancialData } from "../../actions/adminAction";
+
+
+
+function CenterContent({user , members ,setCurrentContent}) {
+const dispatch = useDispatch();
+
+useEffect(() => {
+dispatch(loadFinancialData());
+}, [])
+
+const {incomedata, loading}= useSelector((state)=>state.fetchIncome)
+
+if(!members && !incomedata && loading){
+  return <>loading...</>
+}
+
   return (
     <>
       <div className=" justify-self-center text-white col-span-3 ">
@@ -10,7 +30,7 @@ function CenterContent() {
           <div>
             {/* heading */}
             <h2 className="text-center my-3 text-[1.3em] font-bold">
-              Welcome Jai Mane !
+             { `Welcome ${user.name} !`}
             </h2>
 
             {/* searchbox */}
@@ -33,14 +53,18 @@ function CenterContent() {
             <div className=" bg-gradient-to-r from-[#384BD6] to-[#1EB1BA] w-[95%] lg:w-[18rem]  min-h-[8rem] rounded-lg p-3  relative flex justify-center">
             <img src={threedot} className="absolute w-8 right-0" alt="" />
               <h2 className="text-center">Member List</h2>
+
               <div className="flex gap-2 justify-center absolute bottom-2 items-center ">
-                <button className=" text-xs bg-[#1EB1BA] rounded-md drop-shadow-lg p-2  border border-[rgba(255,255,255,0.3)]">
+              {/* button */}
+                <button onClick={()=> setCurrentContent("Showallmember")} className=" text-xs bg-[#1EB1BA] rounded-md drop-shadow-lg p-2  border border-[rgba(255,255,255,0.3)]">
                   Show All
                 </button>
-                <button className=" text-xs bg-[#384BD6] rounded-md drop-shadow-lg p-2  border border-[rgba(255,255,255,0.3)]">
+
+                <button onClick={()=> setCurrentContent("Showallnewmember")} className=" text-xs bg-[#384BD6] rounded-md drop-shadow-lg p-2  border border-[rgba(255,255,255,0.3)]">
                   New List
                 </button>
               </div>
+
             </div>
 
             {/* New members */}
@@ -48,7 +72,7 @@ function CenterContent() {
             <img src={threedot} className="absolute w-8 right-0" alt="" />
               <h2 className="text-center">New Members</h2>
               <div className="flex gap-2 justify-center">
-               <span className="absolute bottom-2 text-4xl text-gray-300">650</span>
+               <span className="absolute bottom-2 text-4xl text-gray-300">{members ? members.new_members.length : "loading..."}</span>
               </div>
             </div>
 
@@ -58,7 +82,7 @@ function CenterContent() {
 
               <h2 className="text-center">Total Member</h2>
               <div className="flex gap-2 justify-center">
-              <span className="absolute bottom-2 text-4xl text-gray-300">1500 <small className="text-sm">members</small> </span>
+              <span className="absolute bottom-2 text-4xl text-gray-300">{members ? members.member_count : "loading..."} <small className="text-sm">members</small> </span>
               </div>
             </div>
           </div>
@@ -68,27 +92,26 @@ function CenterContent() {
 
           {/* expected ratio */}
           <div className="members flex flex-wrap gap-2 justify-center  lg:flex-nowrap">
-            <div className=" bg-gradient-to-r from-[#384BD6] to-[#1EB1BA] w-[95%] lg:w-[27.5rem] min-h-[22rem] rounded-lg p-3 relative">
-            <img src={threedot} className="absolute w-8 right-0" alt="" />
-             
-              <div className="flex gap-2 justify-center">
-             {/* graph should be show here */}
-              </div>
-              <span className="bg-[rgba(255,255,255,0.3)] h-[1px] w-[90%] rounded-md absolute bottom-10"  />
-              <button className="bg-inherit absolute bottom-2 text-center w-[100%]">Expected ratio</button>
 
+            <div className=" bg-gradient-to-r from-[#384BD6] to-[#1EB1BA] w-[95%] lg:w-[27.5rem] min-h-[22rem] rounded-lg p-3 relative grid place-content-center">
+           
+           <div className="p-2 border-[8px] border-[#384BD6] rounded-full grid place-content-center h-[145px] drop-shadow-lg">
+            <h2 className="text-center">Total Revenue</h2>  
+            <span className="text-4xl text-gray-300">{incomedata ?  incomedata.totalIncome/100 : "...loading"}₹</span>
+           </div>
             </div>
 
             {/* Monthly income             */}
             <div className=" bg-gradient-to-r from-[#384BD6] to-[#1EB1BA] w-[95%] lg:w-[27.5rem] min-h-[22rem] rounded-lg p-3 relative">
             <img src={threedot} className="absolute w-8 right-0" alt="" />
               <h2 className="text-center">Monthly Income</h2>
+             <IncomeChart/>
               <div className="flex gap-2 justify-center h-full items-center">
-             
-              <span className="absolute bottom-2 text-4xl text-gray-300">22%</span>
+              <h2 className=" absolute bottom-12 text-center">This Month Income</h2>  
+              <span className="absolute bottom-2 text-4xl text-gray-300">{incomedata ?  incomedata.monthlyIncome/100 : "...loading"}₹</span>
               {/* Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam enim ea tempore repellat, alias distinctio hic perspiciatis sapiente laboriosam a illo velit modi quod fugiat aut, accusantium placeat itaque temporibus. */}
               </div>
-            </div>
+            </div>  
           </div>
         </div>
       </div>
