@@ -26,6 +26,8 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import MembershipSuccess from './components/User/MembershipSuccess';
 import RenewMembership from './components/User/RenewMembership';
+import Privateworkouts from './components/TrainerDashboard/Calender/Privateworkouts';
+import PribvateDiet from './components/TrainerDashboard/PrivateDiet/PribvateDiet';
 
 
 
@@ -83,6 +85,8 @@ function Main() {
         location.pathname === "/api/auth/password/update" ||
         location.pathname === "/payment" ||
         location.pathname === "/renew" ||
+        location.pathname === "/privateworkouts" ||
+        location.pathname === "/privatediets" ||
         location.pathname === "/success" ? (
         <Routes>
           <Route path='/admin' element={
@@ -118,6 +122,14 @@ function Main() {
 
           {!loading && isAuthenticated && <Route path='/renew' element={<ProtectedRoute isAuthenticated={isAuthenticated} user={user} allowedRole={user.role}>
             <RenewMembership />
+          </ProtectedRoute>} />}
+
+          {!loading && isAuthenticated && <Route path='/privateworkouts' element={<ProtectedRoute isAuthenticated={isAuthenticated} user={user} allowedRole={user.role}>
+            <Privateworkouts />
+          </ProtectedRoute>} />}
+
+          {!loading && isAuthenticated && <Route path='/privatediets' element={<ProtectedRoute isAuthenticated={isAuthenticated} user={user} allowedRole={user.role}>
+            <PribvateDiet />
           </ProtectedRoute>} />}
 
           {!loading && isAuthenticated && <Route path='/payment' element={<ProtectedRoute isAuthenticated={isAuthenticated} user={user} allowedRole="user">

@@ -43,7 +43,7 @@ function About() {
 
       <div className="mainbox">
         <div className="row gap-2 flex-wrap md:flex-nowrap ">
-          <div className="card glass md:w-[33%] w-[100%] ">
+          <div className="cardd glass md:w-[33%] w-[100%] ">
             <h2 className="card-head">Our Mission</h2>
             <p className="card-para ">
               Our mission is to provide gym owners with the tools and resources
@@ -54,7 +54,7 @@ function About() {
             </p>
           </div>
 
-          <div className="card glass md:w-[33%] w-[100%]">
+          <div className="cardd glass md:w-[33%] w-[100%]">
             <h2 className="card-head">Our Software</h2>
             <p className="card-para">
               Our gym management software is a powerful and intuitive platform
@@ -66,7 +66,7 @@ function About() {
             </p>
           </div>
 
-          <div className="card glass md:w-[33%] w-[100%]">
+          <div className="cardd glass md:w-[33%] w-[100%]">
             <h2 className="card-head">Our Support</h2>
             <p className="card-para">
               We understand that implementing new software can be a daunting

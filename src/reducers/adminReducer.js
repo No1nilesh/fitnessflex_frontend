@@ -30,9 +30,14 @@ CREATE_TRAINER_SUCCESS,
 GET_TRAINER_FAILURE,
 GET_TRAINER_REQUEST,
 GET_TRAINER_SUCCESS,
+DELETE_TRAINER_FAILURE,
+DELETE_TRAINER_REQUEST,
+DELETE_TRAINER_SUCCESS,
 
   CLEAR_ERROR
 } from "../constants/adminConstant";
+//by mistake made the trainefr here
+import { DELETE_TRAINER_SCHEDULE_FAILURE, DELETE_TRAINER_SCHEDULE_REQUEST, DELETE_TRAINER_SCHEDULE_SUCCESS } from "../constants/trainerConstant";
 
 // createMembershipReducer.js
 
@@ -68,13 +73,9 @@ export const createMembershipReducer = (state = initialState, action) => {
 
 // getMembershipReducer.js
 
-const initialGetState = {
-  loading: false,
-  currentMembership: null,
-  error: null,
-};
 
-export const getMembershipReducer = (state = initialGetState, action) => {
+
+export const getMembershipReducer = (state = {membership: []}, action) => {
   switch (action.type) {
     case GET_MEMBERSHIP_REQUEST:
       return {
@@ -85,7 +86,7 @@ export const getMembershipReducer = (state = initialGetState, action) => {
       return {
         ...state,
         loading: false,
-        currentMembership: action.payload,
+        membership: action.payload,
       };
     case GET_MEMBERSHIP_FAILURE:
       return {
@@ -103,7 +104,9 @@ export const getMembershipReducer = (state = initialGetState, action) => {
     loading: false,
     success: false,
     error: null,
-    members: []
+    trainer:[],
+    members: [],
+    calender:[]
   };
   
 
@@ -138,6 +141,8 @@ export const getMembershipReducer = (state = initialGetState, action) => {
       case UPDATE_MEMBERSHIP_REQUEST:
         case DELETE_MEMBERSHIP_REQUEST:
           case DELETE_MEMBER_REQUEST:
+            case DELETE_TRAINER_REQUEST:
+              case DELETE_TRAINER_SCHEDULE_REQUEST:
         return {
           ...state,
           loading: true,
@@ -154,15 +159,29 @@ export const getMembershipReducer = (state = initialGetState, action) => {
             loading: false,
             success: state.membership.filter((m) => m._id !== action.payload),
           };
+        case DELETE_TRAINER_SUCCESS:
+          return {
+            ...state,
+            loading: false,
+            success: state.trainer.filter((m) => m._id !== action.payload),
+          };
           case DELETE_MEMBER_SUCCESS:
           return {
             ...state,
             loading: false,
             success: state.members.filter((m) => m._id !== action.payload),
           };
+          case DELETE_TRAINER_SCHEDULE_SUCCESS:
+          return {
+            ...state,
+            loading: false,
+            success: state.calender.filter((m) => m._id !== action.payload),
+          };
       case UPDATE_MEMBERSHIP_FAILURE:
         case DELETE_MEMBERSHIP_FAILURE:
           case DELETE_MEMBER_FAILURE:
+            case DELETE_TRAINER_FAILURE:
+              case DELETE_TRAINER_SCHEDULE_FAILURE:
         return {
           ...state,
           loading: false,
@@ -179,15 +198,10 @@ export const getMembershipReducer = (state = initialGetState, action) => {
   };
 
 
-  const initialIncomeState = {
-    loading: false,
-    success: false,
-    error: null,
-    incomedata: null
-  };
+
   
 
-  export const getFinancialData = (state = initialIncomeState, action) => {
+  export const getFinancialData = (state = {incomedata: []}, action) => {
     switch (action.type) {
       case GET_MONTHLYINCOME_REQUEST:
         return {

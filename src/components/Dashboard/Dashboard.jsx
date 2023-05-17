@@ -10,6 +10,7 @@ import {loadActiveMember} from "../../actions/adminAction"
 import Allmembers from './Allmembers'
 import Allnewmembers from './Allnewmembers'
 import "./dashboard.css"
+import Loader from '../utility/Loader'
 
 function Dashboard({user}) {
   const dispatch = useDispatch();
@@ -39,7 +40,7 @@ function Dashboard({user}) {
  
   return (
     <>
-   <div className='grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-5 xl:place-content-center place-content-baseline h-[100svh] min-w-[100%] relative z-40 py-5'>
+   <div className='grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-5  place-content-baseline h-[100svh] min-w-[100%] relative z-40 py-5'>
 
     {/* <Modal/> */}
     <Sidebar  setCurrentContent={setCurrentContent}/>

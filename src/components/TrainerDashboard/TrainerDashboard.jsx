@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import Clients from "./Clients";
 import MealPlans from "./MealPlans";
 import Overview from "./Overview";
-import ProgressTracker from "./ProgressTracker";
 import Workouts from "./workouts";
 import { useDispatch} from "react-redux";
 import Profile from "../../assets/Profile.png"
@@ -16,8 +14,13 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp"
 import PersonIcon from "@material-ui/icons/Person"
 import { useNavigate } from "react-router-dom";
 
-
 function TrainerDashboard({user}) {
+
+
+
+
+// const {tloading , trainer} = useSelector((state)=>state.loadTrainer)
+
   const [tabIndex, setTabIndex] = useState(0);
 
   const [Open, setOpen] = useState(false)
@@ -63,43 +66,25 @@ function TrainerDashboard({user}) {
       <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
         <TabList>
           <Tab>Overview</Tab>
-          <Tab>Clients</Tab>
           <Tab>Workouts</Tab>
-          <Tab>Nutrition</Tab>
-          <Tab>Progress</Tab>
-          <Tab>Attendance</Tab>
+          <Tab>Diet Plans</Tab>
+         
         </TabList>
 
         <TabPanel>
           <Overview user={user}/>
         </TabPanel>
 
-        <TabPanel>
-          <Clients/>
-        </TabPanel>
+        
 
         <TabPanel>
-       
-          {/* insert workout list and add workout form here */}
         <Workouts/>
         </TabPanel>
 
         <TabPanel>
-        
-          {/* insert meal plan list and add meal plan form here */}
           <MealPlans/>
         </TabPanel>
 
-        <TabPanel>
-      
-          {/* insert progress tracker and graphs here */}
-          <ProgressTracker/>
-        </TabPanel>
-        <TabPanel>
-      <h1>Attendence</h1>
-          {/* insert progress tracker and graphs here */}
-          {/* <ProgressTracker/> */}
-        </TabPanel>
       </Tabs>
     </div>
   );

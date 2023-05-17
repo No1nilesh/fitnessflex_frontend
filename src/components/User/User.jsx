@@ -12,6 +12,8 @@ import { useNavigate } from "react-router-dom";
 import UserHome from "./UserHome";
 import Profile from "../../assets/Profile.png"
 import PaymentPageWithStripe from "./Payment";
+import Workout from "./Workout";
+import Diet from "./Diet";
 
 function User({user}) {
   const [tabIndex, setTabIndex] = useState(0);
@@ -53,7 +55,7 @@ function User({user}) {
           {options.map((item)=>
           (<SpeedDialAction icon={item.icon} tooltipTitle={item.name} key={item.name} onClick={item.func}/>))}
          </SpeedDial>
-      <Tabs className="w-fit" selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
+      <Tabs className="w-[90%]" selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
         <TabList>
           <Tab>Home</Tab>
           <Tab>Workouts</Tab>
@@ -68,17 +70,32 @@ function User({user}) {
 
         <TabPanel>
         
+        <Workout/>
           {/* insert meal plan list and add meal plan form here */}
           {/* <MealPlans/> */}
         </TabPanel>
 
         <TabPanel>
       
+      <Diet/>
           {/* insert progress tracker and graphs here */}
           {/* <ProgressTracker/> */}
         </TabPanel>
       
       </Tabs>
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
   );
 }

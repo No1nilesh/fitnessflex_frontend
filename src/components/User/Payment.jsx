@@ -11,9 +11,14 @@ import  EventIcon  from "@material-ui/icons/Event";
 import  VpnKeyIcon  from "@material-ui/icons/VpnKey";
 import { toast } from "react-toastify";
 import { Fragment } from "react";
+import loader from "../utility/Loader";
 import { createMember, renewMember} from "../../actions/paymentAction";
+import Loader from "../utility/Loader";
+
 
 const Payment =({stripeApiKey})=>{
+
+  
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -23,6 +28,10 @@ const Payment =({stripeApiKey})=>{
   const payBtn = useRef(null);
   const {user} =useSelector((state)=> state.user);
   const { loading, success, member } = useSelector((state) => state.createMember);
+
+  if(loading){
+    return <loader/>
+  }
 
   // error from payment renew TODO
 
@@ -67,6 +76,9 @@ const {data}  = await axios.post(
     }
   )
 
+ 
+
+
 if(result.error) {
   payBtn.current.disabled = false
   toast.error(result.error.message)
@@ -96,12 +108,16 @@ if(result.error) {
 
   }
 
+  if(loading){
+    return <Loader/>
+  }
 
+ 
   return(
     <Fragment>
       <div className="paymentContainer">
-        {/* <Elements stripe={stripePromise}> */}
-          <form className="paymentForm" onSubmit={(e) => submitHandler(e)}>
+      
+          {/* <form className="paymentForm" onSubmit={(e) => submitHandler(e)}>
             <Typography>Card Info</Typography>
             <div>
               <CreditCardIcon />
@@ -122,8 +138,53 @@ if(result.error) {
               ref={payBtn}
               className="paymentFormBtn"
             />
-          </form>
-        {/* </Elements> */}
+          </form> */}
+
+
+
+
+
+          {/* testing neew form */}
+
+      <div className="modal">
+<form class="form" onSubmit={(e) => submitHandler(e)} >
+
+  <div class="separator">
+    <hr class="line"/>
+    <p>or pay using credit card</p>
+    <hr class="line"/>
+  </div>
+  <div class="credit-card-info--form">
+    <div class="input_container">
+      <label for="password_field" class="input_label">Card holder full name</label>
+      <input id="password_field" class="input_field" type="text" name="input-name" title="Inpit title" placeholder="Enter your full name"/>
+      
+    </div>
+    <div class="input_container">
+      <label for="password_field" class="input_label">Card Number</label>
+      <CardNumberElement className="input_field" placeholder="0000 0000 0000 0000" />
+    </div>
+    <div class="input_container">
+      <label for="password_field" class="input_label">Expiry Date / CVV</label>
+      <div class="split">
+      <CardExpiryElement className="input_field" />
+      <CardCvcElement className="input_field" />
+    </div>
+    </div>
+  </div>
+   
+    <input
+              type="submit"
+              value={`Pay -${location.state.member ? location.state.member.amount : location.state.mem.amount}₹$`}
+              ref={payBtn}
+              className="purchase--btn"
+            />
+</form>
+
+
+</div>
+
+    
       </div>
     </Fragment>
   )

@@ -9,7 +9,7 @@ const MembershipSuccess = () => {
         <CheckCircleIcon/>
 
         <Typography>Thank you to Becoming the member</Typography>
-        <Link to={"/membership/me"}>Views Membership details</Link>
+        <Link to={"/user"}>Views Membership details</Link>
     </div>
   )
 }

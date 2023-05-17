@@ -64,19 +64,19 @@ function Sidebar({setCurrentContent}) {
             <img className="w-[25px]" src={workout} alt="" />{" "}
             <span> Workout Plans</span>{" "}
           </li> */}
-          <li onClick={() => setCurrentContent('workoutplan')} className="flex items-center gap-[3px] cursor-pointer">
+          {/* <li onClick={() => setCurrentContent('workoutplan')} className="flex items-center gap-[3px] cursor-pointer">
             <img className="w-[25px]" src={money} alt="" />{" "}
             <span> Payments Plans</span>
-          </li>
+          </li> */}
           
           <li onClick={() => setCurrentContent('Membership')} className="flex items-center gap-[3px] cursor-pointer">
             <img className="w-[25px]" src={plan} alt="" />{" "}
             <span> Membership Plans</span>{" "}
           </li>
-          <li className="flex items-center gap-[3px] cursor-pointer">
+          {/* <li className="flex items-center gap-[3px] cursor-pointer">
             <img className="w-[25px]" src={notification} alt="" />{" "}
             <span> Notifications</span>
-          </li>
+          </li> */}
         </ul>
         {/* line */}
         <span className="bg-[rgba(255,255,255,0.3)] h-[1px] w-[90%] rounded-md" />

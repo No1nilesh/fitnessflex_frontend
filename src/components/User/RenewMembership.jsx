@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchMembership } from "../../actions/userAction";
 import { useNavigate } from "react-router-dom";
+import Loader from "../utility/Loader";
 
 const RenewMembership = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,9 @@ const RenewMembership = () => {
     dispatch(fetchMembership());
   }, []);
 
+  if(loading){
+    return <Loader/>
+  }
   
 
   return (
@@ -50,8 +54,8 @@ function Membercard({member}) {
   return <>
      <div className="w-full md:w-1/3 px-4">
           <div className="bg-purple-400 rounded-lg shadow-lg p-6 mb-4">
-            <h2 className="text-xl font-bold mb-2">{member.membership_type}₹</h2>
-            <p className="mb-4">{member.amount}</p>
+            <h2 className="text-xl font-bold mb-2">{member.membership_type}</h2>
+            <p className="mb-4">{member.amount}₹</p>
             <ul className="text-gray-700">
               <li>Access to basic features</li>
               <li>Limited support</li>

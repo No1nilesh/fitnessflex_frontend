@@ -6,6 +6,7 @@ import {
   clearErrors,
 } from "../../actions/adminAction";
 import { ToastContainer, toast } from "react-toastify";
+import Loader from "../utility/Loader";
 
 const MembershipCard = ({ membership, openModal }) => {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ const MembershipCard = ({ membership, openModal }) => {
     // if the membership has been deleted, return null to remove the card
     return null;
   }
+  
 
   return (
     <div className="bg-green-400 shadow-md rounded-md p-4">

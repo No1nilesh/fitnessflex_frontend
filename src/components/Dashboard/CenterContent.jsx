@@ -4,6 +4,7 @@ import threedot from '../../assets/threedot.png'
 import { toast } from "react-toastify";
 import IncomeChart from "./tranactiondata/IncomeChart";
 import { useSelector, useDispatch } from "react-redux";
+import Loader from "../utility/Loader";
 
 import { loadFinancialData } from "../../actions/adminAction";
 
@@ -19,7 +20,7 @@ dispatch(loadFinancialData());
 const {incomedata, loading}= useSelector((state)=>state.fetchIncome)
 
 if(!members && !incomedata && loading){
-  return <>loading...</>
+  return <Loader/>
 }
 
   return (

@@ -10,6 +10,7 @@ import {
 import {  toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import MembershipCard from "./MembershipCard";
+import Loader from "../utility/Loader";
 
 const MebershipPlan = () => {
   //const
@@ -17,7 +18,7 @@ const MebershipPlan = () => {
     (state) => state.createmem
   );
 
-  const { currentMembership } = useSelector(
+  const { membership } = useSelector(
     (state) => state.getmembership
   );
 
@@ -118,8 +119,6 @@ const MebershipPlan = () => {
       setshowModal(false);
       dispatch(getMembership());
     }, 2000);
-
-
   }
 
 
@@ -149,6 +148,10 @@ const MebershipPlan = () => {
       eid : cmembership._id
     })
   }
+
+  // if(loading){
+  //   return <Loader/>
+  // }
 
 
   return (
@@ -298,8 +301,8 @@ const MebershipPlan = () => {
       <div className="membership overflow-y-auto h-full">
         <h1 className="text-center">Membership</h1>
         <div className="flex flex-col gap-2">
-          {currentMembership
-            ? currentMembership.map((membership) => {
+          {membership
+            ? membership.map((membership) => {
                 return (
                   <MembershipCard
                     key={membership.id}

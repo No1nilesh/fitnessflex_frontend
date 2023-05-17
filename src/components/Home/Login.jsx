@@ -6,6 +6,7 @@ import { clearErrors, login } from '../../actions/userAction'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate, useLocation } from 'react-router-dom'
+import Loader from '../utility/Loader'
 
 
 const Login = (props) => {
@@ -51,6 +52,9 @@ navigate("/admin")
   }, [dispatch, error , isAuthenticated, navigate, user,])
   
 
+  if(loading){
+    return <Loader/>
+  }
  
   return (
     <>

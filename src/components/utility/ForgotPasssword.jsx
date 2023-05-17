@@ -5,6 +5,7 @@ import { clearErrors, forgotPasssword} from "../../actions/userAction";
 import { UPDATE_PROFILE_RESET } from "../../constants/userConstant";
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import Loader from "./Loader";
 // toast.configure()
 
 const ForgotPasssword = () => {
@@ -34,6 +35,9 @@ const ForgotPasssword = () => {
 
   }, [ message, error, dispatch]);
 
+  if(loading){
+    return <Loader/>
+  }
   
   return (
     <div className="grid place-content-center h-screen">

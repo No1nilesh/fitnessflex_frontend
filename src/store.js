@@ -5,6 +5,9 @@ import {forgotPasswordReducer, profileReducer, userReducer, membershipReducer } 
 import { createMembershipReducer, updateMembershipReducer, getMembershipReducer, getActiveMembers, getFinancialData 
   , getMonthlyIncomeData , createTrainerReducer, getTrainerdata} from "./reducers/adminReducer";
 import {createMemberReducer, fetchMemberReducer} from "./reducers/paymentReducer";
+import {loadTrainerReducer, loadAssignedMemberReducer, createprivateworkoutReducer ,loadPrivateworkout , 
+  Deletepvworkout, loadSchedule, createtrainershcedule , updateSchedule, createprivatedietReducer, Deletepvdiet, loadPrivatediet , loadcountdata} from "./reducers/trainerReducer"
+import {getmemberpvworkout , getmemberpvdiet} from "./reducers/memberReducer"
 
 const rootReducer  = combineReducers({
     user: userReducer,
@@ -20,7 +23,21 @@ const rootReducer  = combineReducers({
     fetchIncome:getFinancialData,
     fetchMonthlyIncome : getMonthlyIncomeData,
     createnewtrainer: createTrainerReducer,
-    fetchTrainers : getTrainerdata
+    fetchTrainers : getTrainerdata,
+    loadTrainer : loadTrainerReducer,
+    loadAssign : loadAssignedMemberReducer,
+    createprivateworkout: createprivateworkoutReducer,
+    fetchPrivateworkout : loadPrivateworkout,
+    deletepv : Deletepvworkout,
+    getpvwork : getmemberpvworkout,
+    fetchPrivatediet : loadPrivatediet,
+    deletepvdiet : Deletepvdiet,
+    createpvdiet : createprivatedietReducer,
+    getschedule : loadSchedule,
+    createschedule : createtrainershcedule,
+    updateschedule : updateSchedule,
+    loadcount : loadcountdata,
+    getpvtdiet : getmemberpvdiet,
   });
 
 let initialState = {

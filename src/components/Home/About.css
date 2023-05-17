@@ -132,7 +132,7 @@ textarea{
 	padding: 1rem;
 }
 
-.card{
+.cardd{
 	min-height: 18rem;
 }
 
@@ -151,7 +151,7 @@ textarea{
 }
 
 
-.card h2{
+.cardd h2{
 	text-transform: uppercase;
 	top: 20%;
 }

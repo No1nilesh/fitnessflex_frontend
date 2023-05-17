@@ -29,7 +29,10 @@ CREATE_TRAINER_SUCCESS,
 CREATE_TRAINER_FAILURE,
 GET_TRAINER_FAILURE,
 GET_TRAINER_REQUEST,
-GET_TRAINER_SUCCESS
+GET_TRAINER_SUCCESS,
+DELETE_TRAINER_FAILURE,
+DELETE_TRAINER_REQUEST,
+DELETE_TRAINER_SUCCESS,
   } from "../constants/adminConstant"
 
     export const createMembership = (membershipdata) => async (dispatch) => {
@@ -271,6 +274,26 @@ GET_TRAINER_SUCCESS
         }
       };
 
+      export const deleteTrainer = (id) => async (dispatch) => {
+        try {
+          dispatch({ type: DELETE_TRAINER_REQUEST });
+      
+          const { data } = await axios.delete(`/api/admin/delete/trainer/${id}`);
+      
+          dispatch({
+            type: DELETE_TRAINER_SUCCESS,
+            payload: id,
+          });
+        } catch (error) {
+          dispatch({
+            type: DELETE_TRAINER_FAILURE,
+            payload:
+              error.response && error.response.data.message
+                ? error.response.data.message
+                : error.message,
+          });
+        }
+      };
 
       export const clearErrors = ()=> async(dispatch)=>{
           dispatch({

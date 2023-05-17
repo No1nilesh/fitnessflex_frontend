@@ -1,5 +1,6 @@
 import React from 'react'
 // import { useRef } from 'react'
+import { Link } from 'react-router-dom';
 import Spline from '@splinetool/react-spline';
 import "./Home.css"
 
@@ -8,6 +9,7 @@ function Home() {
 
   return (
     <>
+    <div className='bg-[hsl(232,54%,11%)]'>
 <Spline className='' scene="https://prod.spline.design/058vdxRcnabIhul8/scene.splinecode" />
     {/* <div className=" h-[100svh] w-[100svw] "> */}
     {/* <p className='invisible'>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p> */}
@@ -26,7 +28,7 @@ Welcome to the ultimate gym management website! With our powerful tools and feat
     <li>Our dashboard is the ultimate tool for staying on top of your business operations.</li>
   </ul> */}
 
-<button className='self-center border border-[rgba(255,255,255,0.4)] rounded-md px-[1.5rem] py-1 my-4 bg-[#384BD6] bg-gradient-to-r from-[#384BD6] to-[#3c9ba0] drop-shadow-md  hover:bg-[hsl(186,100%,69%)]'>Try Now!</button>
+<Link to={"/signup"} className='self-center border border-[rgba(255,255,255,0.4)] rounded-md px-[1.5rem] py-1 my-4 bg-[#384BD6] bg-gradient-to-r from-[#384BD6] to-[#3c9ba0] drop-shadow-md  hover:bg-[hsl(186,100%,69%)]'>Try Now!</Link>
 </div>
 
 
@@ -58,6 +60,9 @@ Welcome to the ultimate gym management website! With our powerful tools and feat
         </div>
       </div>
     </section>
+    
+      
+    </div>
     </>
   )
 }

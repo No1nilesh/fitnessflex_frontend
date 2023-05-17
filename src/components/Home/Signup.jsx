@@ -5,7 +5,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { clearErrors, register } from '../../actions/userAction'
 import {  toast } from 'react-toastify';
 import { useNavigate , useLocation } from 'react-router-dom'
-
+import loader from "../utility/Loader";
+import Loader from "../utility/Loader";
 
 
 
@@ -71,6 +72,9 @@ useEffect(() => {
   }
 }, [dispatch, error,  navigate, isAuthenticated]);
 
+if(loading){
+  return <Loader/>
+}
 
 
   return (
@@ -78,13 +82,14 @@ useEffect(() => {
 
     <div className="bg-white">
   
+  
     <div className=" h-[100svh] mx-auto ">
 <div className="md:flex min-h-full items-center justify-center  px-4 sm:px-6 lg:px-8  -z-10">
     
     <div className="signupImage md:max-w-[45%] hidden md:block ">
       <img className="" src={signupimage} alt="" />
     </div>
-     
+    
       <div className="w-full max-w-md space-y-4  border rounded-md p-4 shadow-md">
         <div>
           {/* <img
@@ -116,6 +121,7 @@ useEffect(() => {
                 className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                 placeholder="Name"
                 autoComplete="off"
+                min={4}
               />
             </div>
               <label htmlFor="email-address" className="sr-only">
@@ -146,6 +152,7 @@ useEffect(() => {
                 onChange={registerDataChange}
                 autoComplete="current-password"
                 required
+                min={6}
                 className="relative block w-full appearance-none rounded-none  border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                 placeholder="Password"
               />
@@ -159,6 +166,7 @@ useEffect(() => {
                 name="cpassword"
                 type="password"
                 required
+                min={6}
                 className="relative block w-full appearance-none rounded-none border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                 placeholder="Confirm Password"
               />
@@ -173,6 +181,7 @@ useEffect(() => {
                     name="avatar"
                     accept="image/*"
                     onChange={registerDataChange}
+                    required
                 // onChange={profiledata}
                 className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-500 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm file:bg-inherit file:border-none"
                 placeholder="Profile Pic"
@@ -195,7 +204,8 @@ useEffect(() => {
             </div>
 
             <div className="text-sm">
-              <Link to="/login" className="font-medium text-indigo-600 hover:text-indigo-500">
+              <Link to="/login" className="font-medium text-
+              indigo-600 hover:text-indigo-500">
                 already have an account?
               </Link>
             </div>

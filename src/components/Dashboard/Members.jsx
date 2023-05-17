@@ -6,13 +6,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { createTrainer, loadtrainerData, clearErrors } from "../../actions/adminAction";
 import { toast } from "react-toastify";
 import Trainerdata from "./Trainerdata";
+import Loader from "../utility/Loader";
 
 const Members = () => {
 
 const dispatch = useDispatch();
 
 const {loading ,trainer,  error} = useSelector((state)=>state.createnewtrainer)
-const {tloading ,ttrainer, terror} = useSelector((state)=>state.fetchTrainers)
+const {tloading ,ttrainer} = useSelector((state)=>state.fetchTrainers)
 
 useEffect(() => {
  dispatch(loadtrainerData());
@@ -100,18 +101,20 @@ const [formdata, setformdata] = useState({
   }, [dispatch, error,trainer ]);
   
   
-
+// if(loading || tloading){
+//   return <Loader/>
+// }
 
   return (
     <div className=" justify-self-center text-white col-span-3 ">
-      <h1 className="text-center text-2xl">Trainers</h1>
+    <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-3xl text-center dark:text-white mt-2"> Trainer</h1>
       <div className="flex flex-col justify-evenly">
 
    
       <form
         onSubmit={handleSubmit}
-        action="#"  method="POST" autoComplete="off" encType="multipart/form-data"
-        className="bg-gradient-to-b from-[#252835] to-[#273F94] p-8 rounded-lg shadow-md w-[60%]"
+        action="#"  method="POST" autoComplete="false" encType="multipart/form-data"
+        className="bg-gradient-to-b from-[#252835] to-[#273F94] p-8 rounded-lg shadow-md "
       >
      
         <label className="block mb-2 text-left">
@@ -121,7 +124,7 @@ const [formdata, setformdata] = useState({
             name="name"
          
             onChange={registerDataChange}
-            className="border border-gray-400 px-2 py-1 rounded w-full bg-[rgba(255,255,255,0.1)]"
+            className="border border-gray-400 p-2 border-none rounded w-full bg-[rgba(255,255,255,0.1)]"
           />
         </label>
         <label className="block mb-2 text-left">
@@ -129,8 +132,9 @@ const [formdata, setformdata] = useState({
           <input
             type="email"
             name="email"
+            autoComplete="false"
             onChange={registerDataChange}
-            className="border border-gray-400 px-2 py-1 rounded w-full bg-[rgba(255,255,255,0.1)]"
+            className="border border-gray-400 p-2 border-none rounded w-full bg-[rgba(255,255,255,0.1)]"
           />
         </label>
         <label className="block mb-2 text-left">
@@ -138,8 +142,9 @@ const [formdata, setformdata] = useState({
           <input
             type="password"
             name="password"
+            autoComplete="false"
             onChange={registerDataChange}
-            className="border border-gray-400 px-2 py-1 rounded w-full bg-[rgba(255,255,255,0.1)]"
+            className="border border-gray-400 p-2 border-none rounded w-full bg-[rgba(255,255,255,0.1)]"
           />
         </label>
         <label htmlFor="avatar" className="block mb-2 text-left ">
@@ -148,14 +153,14 @@ const [formdata, setformdata] = useState({
               <div className="flex">
 
               
-              <img src={avatarPreview} alt="Avatar Preview"  className="w-[45px] border bg-[rgba(255,255,255,0.1)] border-gray-400 rounded rounded-r-none border-r-transparent"/>
+              <img src={avatarPreview} alt="Avatar Preview"  className="w-[45px] border bg-[rgba(255,255,255,0.1)] border-gray-400 rounded rounded-r-none border-none"/>
               <input
                 type="file"
                     name="avatar"
                     accept="image/*"
                     onChange={registerDataChange}
                 // onChange={profiledata}
-                className="border border-gray-400 px-2 py-1 rounded w-full bg-[rgba(255,255,255,0.1)] rounded-l-none border-l-transparent"
+                className="border border-gray-400 p-2 border-none rounded w-full bg-[rgba(255,255,255,0.1)] rounded-l-none border-l-transparent"
                 placeholder="Profile Pic"
               />
       </div>
@@ -175,7 +180,7 @@ const [formdata, setformdata] = useState({
             type="number"
             name="hourlyRate"
             onChange={registerDataChange}
-            className="border border-gray-400 px-2 py-1 rounded w-full bg-[rgba(255,255,255,0.1)]"
+            className="border border-gray-400 p-2 border-none rounded w-full bg-[rgba(255,255,255,0.1)]"
           />
         </label>
         <label className="block mb-2 text-left">
@@ -184,7 +189,7 @@ const [formdata, setformdata] = useState({
             type="text"
             name="availability"
             onChange={registerDataChange}
-            className="border border-gray-400 px-2 py-1 rounded w-full bg-[rgba(255,255,255,0.1)]"
+            className="border border-gray-400 p-2 border-none rounded w-full bg-[rgba(255,255,255,0.1)]"
           />
         </label>
         <button
@@ -201,6 +206,9 @@ const [formdata, setformdata] = useState({
 
 
 <div className="container mx-auto px-4 sm:px-6 lg:px-8 col-span-3">
+<div>
+
+
         {/* <Usermodal isOpen={isOpen} user={user}   toggleModal={toggleModal}/> */}
         <h1 className="text-2xl font-semibold  mb-8 text-center text-white">All Trainers</h1>
         {tloading ? (
@@ -212,6 +220,7 @@ const [formdata, setformdata] = useState({
             )): "loading"}
         </div>
         )}
+        </div>
     </div>
 
 
